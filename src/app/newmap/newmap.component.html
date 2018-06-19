@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="column">
+     <label for="title" style="width: 16%;margin-left: 73px;">Name :</label> 
+    </div>
+    <div class="column">
+        <input type="text" [(ngModel)]="place" >
+    </div>
+</div>
+<div class="row">
+    <div class="column">
+     <label for="title" style="width: 16%;margin-left: 73px;">Content :</label> 
+    </div>
+    <div class="column">
+        <textarea [(ngModel)]="content" style="width:50%;"></textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="column">
+     <label for="title" style="width: 16%;margin-left: 73px;">Image URL:</label> 
+    </div>
+    <div class="column">
+         <textarea [(ngModel)]="image_url" style="width:50%;"></textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="column">
+       <label for="title" style="width: 16%;margin-left: 73px;">Location:</label> 
+    </div>
+</div>
+<div class="row">
+      <div class="column">
+             <agm-map [latitude]="lat" [longitude]="lng" [zoom]=4 (mapClick)="mapClicked($event)">
+                      <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable"></agm-marker>
+             </agm-map>
+</div>
+         
+</div>
+<div style="margin-left:30%;margin-top: 5% height:40px;"><button style="font-size: x-large;" (click)="CreateData();">Create Data</button> </div>

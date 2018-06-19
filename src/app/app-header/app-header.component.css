@@ -1,0 +1,21 @@
+.column{
+    float: left;
+    width: 16.5%;
+    display: inline;
+    color: white;
+    background-color: black;
+    height: 50px;
+    font-size: small;
+    font-family: sans-serif;
+     text-transform: uppercase;
+     padding-top: 19px;
+}
+.row{
+    display: inline;
+}
+.img {
+    width: 79px;
+    height:50px;
+    padding-left: 13px;
+    margin-top: -14px;
+}

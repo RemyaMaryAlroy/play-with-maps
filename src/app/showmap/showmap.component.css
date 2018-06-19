@@ -1,0 +1,15 @@
+.column{
+    width : 40%;
+    display: inline;
+}
+.row {
+    margin-left: 20px;
+    
+}
+agm-map {
+      height: 250px;
+    }
+.label{
+    width: 16%;
+    margin-left: 13px;
+}
