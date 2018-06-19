@@ -68,7 +68,7 @@ export class UpdatemapComponent implements OnInit {
  );
 
  }
-  mapClicked($event: MouseEvent) {
+  mapClicked($event) {
     this.markers.push({
       lat: $event.coords.lat,
       lng: $event.coords.lng,
@@ -83,10 +83,9 @@ export class UpdatemapComponent implements OnInit {
        this.place = this.post.title;
        this.content = this.post.content;
         this.image_url = this.post.image_url;
-        let date= new Date(this.post.created_at);
-        this.created_at = date;
+        this.created_at = this.post.created_at;
         this.lat = Number(this.post.lat);
-        this.long = Number(this.post.long);
+        this.lng = Number(this.post.long);
         this.markers[0].lat = Number(this.post.lat);
         this.markers[0].lng = Number(this.post.long);
       }

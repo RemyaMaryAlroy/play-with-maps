@@ -9,8 +9,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 })
 export class NewmapComponent implements OnInit {
  place ="";
- lat;
- lng;
+ lat ="";
+ lng = "";
  content ="";
  image_url="";
  markers: marker[] = [{
@@ -32,7 +32,7 @@ export class NewmapComponent implements OnInit {
  
  CreateData(){
      this.lat = String(this.markers[0].lat);
-     this.long = String(this.markers[0].lng);
+     this.lng = String(this.markers[0].lng);
      let body = {
     "post": {
 
@@ -42,7 +42,7 @@ export class NewmapComponent implements OnInit {
 
     "lat": this.lat,
 
-    "long": this.long,
+    "long": this.lng,
 
     "image_url": this.image_url
 
@@ -53,14 +53,12 @@ export class NewmapComponent implements OnInit {
         this.place =null;
         this.content = null;
         this.image_url = null;
-        this.created_at = null;
         alert("Data Created Succesfully!");
         return null;
      },
      (err : HttpErrorResponse)=> { 
          err.message;
-        this.posts = null;
-        return this.posts;
+         return null;
       }
    
  );

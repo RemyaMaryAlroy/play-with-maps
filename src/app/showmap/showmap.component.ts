@@ -8,13 +8,14 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./showmap.component.css']
 })
 export class ShowmapComponent implements OnInit {
- post: any[] =[];
+ post ;
   lat : number= 51.673858;
   long :number= 7.815982;
   content ="";
  image_url="";
  place:"";
  created_at="";
+ posts: any[] = [] ;
   public show:boolean = false;
   markers: marker[] = [
 	  {
@@ -59,8 +60,7 @@ export class ShowmapComponent implements OnInit {
        this.place = this.post.title;
        this.content = this.post.content;
         this.image_url = this.post.image_url;
-        let date= new Date(this.post.created_at);
-        this.created_at = date;
+        this.created_at = this.post.created_at;
         this.lat = Number(this.post.lat);
         this.long = Number(this.post.long);
         this.markers[0].lat = Number(this.post.lat);
