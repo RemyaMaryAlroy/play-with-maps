@@ -9,8 +9,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 })
 export class NewmapComponent implements OnInit {
  place ="";
- lat : Number ;
- lng: Number;
+ lat;
+ lng;
  content ="";
  image_url="";
  markers: marker[] = [{
@@ -25,7 +25,7 @@ export class NewmapComponent implements OnInit {
    
   }
   
-  mapClicked($event: MouseEvent) {
+  mapClicked($event) {
   this.markers[0].lat = $event.coords.lat;
   this.markers[0].lng = $event.coords.lng;
   }
