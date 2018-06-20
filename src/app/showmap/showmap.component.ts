@@ -9,8 +9,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 })
 export class ShowmapComponent implements OnInit {
  post ;
-  lat : number= 51.673858;
-  long :number= 7.815982;
+  lat : number;
+  long :number;
   content ="";
  image_url="";
  place:"";
