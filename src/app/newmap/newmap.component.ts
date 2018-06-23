@@ -34,13 +34,14 @@ export class NewmapComponent implements OnInit {
   
   getLocation(){
     this.res$=this.mapService.getLocation(this.place);
+	this.show = true;
     this.res$.subscribe(
     value =>{
 	   this.lat = Number(value.lat());
 	   this.lng= Number(value.lng());
 	   this.markers[0].lat = Number(value.lat());
 	   this.markers[0].lng = Number(value.lng());
-	   this.show = true;
+	   
 	}
    );
   }
