@@ -3,7 +3,7 @@ const express = require('express'),
 const app = express();
 app.use(express.static('./dist/play-with-maps/src'));
 app.get('/*',(req,res)=>{
-	res.sendFile(path.join(__dirname,'/dist/play-with-maps/index.html'));
+	res.sendFile(path.join(__dirname,'./dist/play-with-maps/index.html'));
 	
 });
 
