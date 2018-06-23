@@ -8,7 +8,7 @@ import { UpdatemapComponent } from './updatemap/updatemap.component';
 import { DeletemapComponent } from './deletemap/deletemap.component';
 
 const routes: Routes = [
-  { path: 'showmap/:id', component: ShowmapComponent},
+  { path: 'showmap', component: ShowmapComponent},
   { path: 'newmap',component: NewmapComponent },
   { path:'updatemap', component: UpdatemapComponent },
   { path: 'deletemap', component: DeletemapComponent },

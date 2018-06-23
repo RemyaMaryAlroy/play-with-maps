@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AgmMap,AgmCoreModule} from '@agm/core';
 import {} from '@types/googlemaps';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, Subject, throwError,AsyncSubject,BehaviorSubject} from 'rxjs';
+import { map } from 'rxjs/operators';
+import {MapService} from '../map.service';
+
 @Component({
   selector: 'app-newmap',
   templateUrl: './newmap.component.html',
@@ -9,20 +13,36 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 })
 export class NewmapComponent implements OnInit {
  place ="";
- lat ="";
- lng = "";
+ lat : Number;
+ lng : Number;
  content ="";
  image_url="";
+ res$ = new Observable<any>();
+ public show:boolean = false;
+ 
  markers: marker[] = [{
 		  lat: 51.673858,
 		  lng: 7.815982,
 		  label: 'A',
 		  draggable: true
 	  }];
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient,private mapService : MapService) { }
 
   ngOnInit() {
    
+  }
+  
+  getLocation(){
+    this.res$=this.mapService.getLocation(this.place);
+    this.res$.subscribe(
+    value =>{
+	   this.lat = Number(value.lat());
+	   this.lng= Number(value.lng());
+	   this.markers[0].lat = Number(value.lat());
+	   this.markers[0].lng = Number(value.lng());
+	   this.show = true;
+	}
+   );
   }
   
   mapClicked($event) {
@@ -31,8 +51,8 @@ export class NewmapComponent implements OnInit {
   }
  
  CreateData(){
-     this.lat = String(this.markers[0].lat);
-     this.lng = String(this.markers[0].lng);
+     let lat1 = String(this.markers[0].lat);
+    let lng1= String(this.markers[0].lng);
      let body = {
     "post": {
 
@@ -40,9 +60,9 @@ export class NewmapComponent implements OnInit {
 
     "content": this.content,
 
-    "lat": this.lat,
+    "lat": lat1,
 
-    "long": this.lng,
+    "long": lng1,
 
     "image_url": this.image_url
 

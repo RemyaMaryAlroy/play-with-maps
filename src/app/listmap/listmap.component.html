@@ -1,28 +1,29 @@
+<div style="margin-left: 30%;font-weight: bold; font-size:30px;">Listing All Maps In The List</div>
 <div  class ="centered" class="table-responsive table-compare" style="margin-top: 1%;
-    margin-left: 3%;">
+    margin-left: 3%;" *ngIf="show">	
     <table style="border-style: solid;" > 
         <thead>
 				<tr>
-					<td style="color:black;padding-left: 10px;font-weight: bold; border-right:8px solid #f5f5f5;padding-top: 0.5%;padding-bottom: 1%;margin-left:10px;font-size:20px;" *ngFor= "let heading of title" >
+					<td style="color:black;padding-left: 10px;font-weight: bold; padding-top: 0.5%;padding-bottom: 1%;margin-left:10px;font-size:20px;" *ngFor= "let heading of title" >
 						{{heading.name}}
 					</td>
 				</tr>
 			</thead>
         <tbody>
             <tr *ngFor= "let item of posts"> 
-                <td style="color:black;padding-left: 10px;font-weight: bold; border-right:8px solid #f5f5f5;padding-top: 0.5%;padding-bottom: 1%;margin-left:10px;font-size:20px;" >
+                <td style="color:black;padding-left: 10px;font-weight: bold; padding-top: 0.5%;padding-bottom: 1%;margin-left:10px;font-size:20px;" >
                     {{item.id}}
                 </td>
-                <td style="color:black;padding-left: 10px;font-weight: bold; border-right:8px solid #f5f5f5;padding-top: 0.5%;padding-bottom: 1%;margin-left:10px;font-size:20px;" >
-                   <a [routerLink]="['/showmap', item.id]" >{{item.title}}</a> 
+                <td style="color:black;padding-left: 10px;font-weight: bold; padding-top: 0.5%;padding-bottom: 1%;margin-left:10px;font-size:20px;" >
+                   {{item.title}} 
                 </td>
-                <td style="color:black;padding-left: 10px;font-weight: bold; border-right:8px solid #f5f5f5;padding-top: 0.5%;padding-bottom: 1%;margin-left:10px;font-size:20px;" >
+                <td style="color:black;padding-left: 10px;font-weight: bold; padding-top: 0.5%;padding-bottom: 1%;margin-left:10px;font-size:20px;" >
                     {{item.content}}
                 </td>
-                <td style="color:black;padding-left: 10px;font-weight: bold; border-right:8px solid #f5f5f5;padding-top: 0.5%;padding-bottom: 1%;margin-left:10px;font-size:20px;" >
+                <td style="color:black;padding-left: 10px;font-weight: bold; padding-top: 0.5%;padding-bottom: 1%;margin-left:10px;font-size:20px;" >
                     {{item.created_at | date}}
                 </td>
-                <td style="color:black;padding-left: 10px;font-weight: bold; border-right:8px solid #f5f5f5;padding-top: 0.5%;padding-bottom: 1%;margin-left:10px;font-size:20px;" >
+                <td style="color:black;padding-left: 10px;font-weight: bold; padding-top: 0.5%;padding-bottom: 1%;margin-left:10px;font-size:20px;" >
                     {{item.updated_at |date}}
                 </td>
             </tr>
