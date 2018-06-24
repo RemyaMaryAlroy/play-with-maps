@@ -33,20 +33,18 @@ export class NewmapComponent implements OnInit {
   }
   
   getLocation(){
-  console.log(this.place);
-  this.show = false;
-    this.res$=this.mapService.getLocation(this.place);
-    this.res$.subscribe(
+    if (this.show == true){
+	   this.show = false;
+	}
+    this.mapService.getLocation(this.place).subscribe(
     value =>{
-	console.log(this.show);
 	   this.lat = Number(value.lat());
 	   this.lng= Number(value.lng());
 	   this.markers[0].lat = Number(value.lat());
-	   this.markers[0].lng = Number(value.lng());
-	   this.show = true;
+	   this.markers[0].lng = Number(value.lng()); 
 	}
    );
-   
+  this.show =true;
   }
   
   mapClicked($event) {
