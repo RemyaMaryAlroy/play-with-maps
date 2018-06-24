@@ -11,8 +11,7 @@ import { Observable} from 'rxjs';
 })
 export class ListmapComponent implements OnInit {
   public show:boolean = false;
-  constructor(private mapservice : MapService,
-  private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
   title  = [{'name' : 'id'},{'name' : 'title'},{'name' : 'content'},{'name' : 'created_at'},{'name' : 'updated_at'}];
   posts: any[] = [] ;
   
@@ -21,16 +20,7 @@ export class ListmapComponent implements OnInit {
         this.show = true;
        
   }
-   getPostsMap(){
-     let res$ = new Observable<any>();
-	 res$ = this.mapservice.getPosts();
-	 res$.subscribe(
-	    value =>{
-		  console.log(value);
-		 
-		}
-	 );
-   }
+   
   getPosts(){
     this.http.get('https://wf-challenge-cigomos.herokuapp.com/posts').subscribe(
      data => {

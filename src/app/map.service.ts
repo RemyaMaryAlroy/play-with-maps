@@ -13,22 +13,7 @@ export class MapService {
  posts: any[] = [] ;
   constructor( private http: HttpClient) { }
   
-   getPosts(){
-     let res$ = new Observable<any>();
-	 let res1 = new Subject();
-	 res$ = this.http.get('https://wf-challenge-cigomos.herokuapp.com/posts');
-	 res$.subscribe(
-	   res =>{
-	     res1.next(res);
-		 res1.complete();
-	   }
-	   error =>{
-	      res1.next(error);
-		  res1.complete();
-	   }
-	 );
-	 return res$;
-  }
+   
   
   getLocation(address: string): Observable<any>{
      console.log('Getting address: ', address);
@@ -38,6 +23,7 @@ export class MapService {
             'address': address
         }, (results, status) => {
             if (status == google.maps.GeocoderStatus.OK) {
+			    console.log(results[0].geometry.location.lat());
                 observer.next(results[0].geometry.location);
                 observer.complete();
             } else {
