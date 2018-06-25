@@ -3,11 +3,11 @@ path = require('path');
 const app = express();
 
 
-app.use(express.static('./dist/dummy'));
+app.use(express.static('./dist/play-with-maps'));
 
 
-app.get('/*', (req,res)=>{
-	res.sendFile(path.join(__dirname + '/dist/dummy/index.html'));
+app.get('*', (req,res)=>{
+	res.sendFile(path.join('./dist/play-with-maps/index.html'));
 });
 
 app.listen(process.env.PORT || 8080, ()=>{
