@@ -33,6 +33,7 @@ export class NewmapComponent implements OnInit {
   }
   
   getLocation(){
+     this.show = true;
     this.mapService.getLocation(this.place).subscribe(
     value =>{
 	   this.lat = Number(value.lat());
