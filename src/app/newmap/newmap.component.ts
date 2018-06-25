@@ -42,7 +42,6 @@ export class NewmapComponent implements OnInit {
 	   this.markers[0].lng = Number(value.lng()); 
 	}
    );
-  this.show =true;
   }
   
   mapClicked($event) {
