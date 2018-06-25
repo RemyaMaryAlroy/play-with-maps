@@ -3,7 +3,7 @@
      <label for="title" style="width: 16%;margin-left: 73px;">Name :</label> 
     </div>
     <div class="column">
-        <input type="text" [(ngModel)]="place" >
+        <input type="text" [(ngModel)]="place" (keyup)="locationChange()">
     </div>
 	<div class="column">
 		<button (click)="getLocation()">Get Location Map</button>
