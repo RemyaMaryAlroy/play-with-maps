@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class MapService {
-
+  google: any;
  posts: any[] = [] ;
   constructor( private http: HttpClient) { }
   
