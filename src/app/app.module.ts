@@ -32,7 +32,8 @@ import { DeletemapComponent } from './deletemap/deletemap.component';
      AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAWDHXGOPBQ6ZJEzm82wRPtcwEF7iOxn2w',
-      libraries: ["places"]
+      libraries: ["places"],
+	  protocol : 1
     })
   ],
   providers: [MapService],
