@@ -13,14 +13,14 @@ import {MapService} from '../map.service';
 })
 export class NewmapComponent implements OnInit {
  place ="";
- lat : Number;
- lng : Number;
+ public lat : Number = 0;
+ public lng : Number = 0;
  content ="";
  image_url="";
  public show:boolean = false;
- markers: marker[] = [{
-		  lat: null,
-		  lng: null,
+ public markers: marker[] = [{
+		  lat: 0,
+		  lng: 0,
 		  label: 'A',
 		  draggable: true
 	  }];
