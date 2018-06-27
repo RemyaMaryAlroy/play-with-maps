@@ -13,14 +13,14 @@ import {MapService} from '../map.service';
 })
 export class NewmapComponent implements OnInit {
  place ="";
- public lat : Number = 0;
- public lng : Number = 0;
+ lat: number ;
+ lng: number ;
  content ="";
  image_url="";
  public show:boolean = false;
  public markers: marker[] = [{
-		  lat: 0,
-		  lng: 0,
+		  lat: 51.673858,
+		  lng: 7.815982,
 		  label: 'A',
 		  draggable: true
 	  }];
@@ -31,19 +31,16 @@ export class NewmapComponent implements OnInit {
   }
   locationChange(){
      this.show = false;
-	 this.lat = 0;
-	 this.lng = 0;
-	 this.markers[0].lat = 0;
-	 this.markers[0].lng = 0;
   }
   
   getLocation(){
     this.mapService.getLocation(this.place).subscribe(
     value =>{
-	   this.lat = Number(value.lat());
-	   this.lng = Number(value.lng());
-	   this.markers[0].lat = Number(value.lat());
-	   this.markers[0].lng = Number(value.lng()); 
+	console.log(value.lat());
+	   this.lat = value.lat();
+	   this.lng = value.lng();
+	   this.markers[0].lat = value.lat();
+	   this.markers[0].lng = value.lng(); 
 	}
    );
     this.show = true;
