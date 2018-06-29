@@ -16,14 +16,12 @@ export class MapService {
    
   
   getLocation(address: string): Observable<any>{
-     console.log('Getting address: ', address);
     let geocoder = new google.maps.Geocoder();
     return Observable.create(observer => {
         geocoder.geocode({
             'address': address
         }, (results, status) => {
             if (status == google.maps.GeocoderStatus.OK) {
-			    console.log(results[0].geometry.location.lat());
                 observer.next(results[0].geometry.location);
                 observer.complete();
             } else {

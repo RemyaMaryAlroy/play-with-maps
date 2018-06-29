@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,NgZone } from '@angular/core';
 import { AgmMap,AgmCoreModule} from '@agm/core';
 import {} from '@types/googlemaps';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -24,7 +24,7 @@ export class NewmapComponent implements OnInit {
 		  label: 'A',
 		  draggable: true
 	  }];
-  constructor(public http: HttpClient,private mapService : MapService) { }
+  constructor(public http: HttpClient,private mapService : MapService,private _zone: NgZone) { }
 
   ngOnInit() {
    
@@ -34,16 +34,17 @@ export class NewmapComponent implements OnInit {
   }
   
   getLocation(){
-    this.mapService.getLocation(this.place).subscribe(
-    value =>{
-	console.log(value.lat());
-	   this.lat = value.lat();
-	   this.lng = value.lng();
-	   this.markers[0].lat = value.lat();
-	   this.markers[0].lng = value.lng(); 
-	}
-   );
-    this.show = true;
+  this._zone.run(() =>{
+     this.mapService.getLocation(this.place).subscribe(
+       value =>{
+	   		this.lat = value.lat();
+	   		this.lng = value.lng();
+	   		this.markers[0].lat = value.lat();
+	   		this.markers[0].lng = value.lng(); 
+	});
+	 this.show = true;
+  });
+ 
   }
   
   mapClicked($event) {
