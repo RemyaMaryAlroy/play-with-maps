@@ -44,7 +44,7 @@ export class NewmapComponent implements OnInit {
 	});
 	 this.show = true;
   });
- 
+   this.getLocation();
   }
   
   mapClicked($event) {

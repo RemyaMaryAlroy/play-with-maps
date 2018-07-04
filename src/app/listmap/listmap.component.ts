@@ -17,7 +17,10 @@ export class ListmapComponent implements OnInit {
   
   ngOnInit() {
 	   this.getPosts();
-        this.show = true;
+       if(this.posts.length > 0)
+	     this.show = true;
+	   else
+	     this.show = false;
        
   }
    
