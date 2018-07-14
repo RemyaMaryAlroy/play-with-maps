@@ -11,16 +11,14 @@ import { Observable} from 'rxjs';
 })
 export class ListmapComponent implements OnInit {
   public show:boolean = false;
+  public nomaps:boolean = true;
   constructor(private http: HttpClient) {}
   title  = [{'name' : 'id'},{'name' : 'title'},{'name' : 'content'},{'name' : 'created_at'},{'name' : 'updated_at'}];
   posts: any[] = [] ;
   
   ngOnInit() {
 	   this.getPosts();
-       if(this.posts.length > 0)
-	     this.show = true;
-	   else
-	     this.show = false;
+	    
        
   }
    
@@ -28,7 +26,13 @@ export class ListmapComponent implements OnInit {
     this.http.get('https://wf-challenge-cigomos.herokuapp.com/posts').subscribe(
      data => {
       this.posts = data as any[] ; 
-      console.log(this.posts);
+      if(this.posts.length > 0){
+	   	 this.nomaps =false;
+	     this.show = true;
+	   }    
+	   else{
+	      this.show = false;
+	   }
        return this.posts;
      },
      (err : HttpErrorResponse)=> { 

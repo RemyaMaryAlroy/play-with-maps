@@ -1,7 +1,7 @@
 <div style="margin-left: 30%;font-weight: bold; font-size:30px;">Listing All Maps In The List</div>
 <div  class ="centered" class="table-responsive table-compare" style="margin-top: 1%;
     margin-left: 3%;" >	
-	<div><h1>No Maps to List</h1>
+	<div *ngIf="nomaps"><h1>No Maps to List</h1>
 	</div>
     <table style="border-style: solid;" *ngIf="show" > 
         <thead>
